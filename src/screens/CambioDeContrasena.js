@@ -13,6 +13,8 @@ import {
 import { URL_BASE } from "../config/URL_BASE";
 import { useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
+import { Alert } from 'react-native';
+// alertas 
 export default function CambioDeContrasena({ navigation, route }) {
   const code = route.params.code;
   const [password1, setPassword1] = useState("");
@@ -47,11 +49,19 @@ export default function CambioDeContrasena({ navigation, route }) {
         const response = await request.json();
         console.log(response);
         response.success &&
-          (alert("se cambio la contraseña con exito"),
+          (Alert.alert(
+            'CAMBIO EXITOSO',
+            'Se cambio la contraseña con exito.',
+            [
+              { text: 'ACEPTAR', onPress: () => console.log('Presionado ACEPTAR') },
+              
+            ]
+          ),
           navigation.navigate("Login"));
         response.password && alert(response.password);
         response.detail && alert(response.detail);
       } else {
+        
         alert("las contraseñas no coinciden");
       }
     } else {

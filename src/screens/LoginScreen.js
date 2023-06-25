@@ -23,6 +23,9 @@ import * as SecureStore from "expo-secure-store";
 //url base
 import { URL_BASE } from "../config/URL_BASE";
 
+import { Alert } from 'react-native';
+// alertas 
+
 export default function LoginScreen() {
   const navigation = useNavigation();
   const [staff, setStaff] = useState(false);
@@ -34,12 +37,29 @@ export default function LoginScreen() {
   };
   const emptyValidate = () => {
     if (email.trim() === "") {
-      alert("el email no puede estar vacio");
+      Alert.alert(
+        'CAMPO VACIO',
+        'correo electronico vacio',
+        [
+          { text: 'ACEPTAR', onPress: () => console.log('Presionado ACEPTAR') },
+          
+        ]
+      );
     }
     if (password.trim() === "") {
-      alert("El campo contraseña no puede estrar vacio");
+      Alert.alert(
+        'CAMPO VACIO',
+        'campo de contraseña vacio',
+        [
+          { text: 'ACEPTAR', onPress: () => console.log('Presionado ACEPTAR') },
+          
+        ]
+      );
+      
     }
   };
+  
+  
   const onLoginPressed = async () => {
     emptyValidate();
     const url = `${URL_BASE}/api/auth/login/`;
@@ -70,12 +90,27 @@ export default function LoginScreen() {
         navigation.navigate("Inside", { staff: true });
       navigation.navigate("Inside", { staff: staff });
     } else {
-      alert(respuesta.email);
+      Alert.alert(
+        'INCORRECTO',
+        'correo electronico incorrecto.',
+        [
+          { text: 'ACEPTAR', onPress: () => console.log('Presionado ACEPTAR') },
+          
+        ]
+      );
     }
     if (respuesta.detail) {
-      alert(detail);
+      Alert.alert(
+        'INCORRECTO',
+        'Contraseña incorrecta.',
+        [
+          { text: 'ACEPTAR', onPress: () => console.log('Presionado ACEPTAR') },
+          
+        ]
+      );
     }
   };
+  
 
   return (
     <>

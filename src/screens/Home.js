@@ -20,6 +20,8 @@ import { URL_BASE } from "../config/URL_BASE";
 //imports de los conponentes 
 import BookCard from "../components/BookCard";
 import Loading from "../components/Loading";
+import { Alert } from 'react-native';
+// alertas 
 
 export default function Home({ navigation }) {
   const [data, setData] = useState([]);
@@ -106,7 +108,14 @@ export default function Home({ navigation }) {
             Styles={styles.container1}
             onPress={() => {
               if (page - 1 === pages) {
-                alert("No hay mas resultados");
+                Alert.alert(
+                  'SIN LIBROS',
+                  'No hay mas resultados',
+                  [
+                    { text: 'ACEPTAR', onPress: () => console.log('Presionado ACEPTAR') },
+                    
+                  ]
+                );
               } else {
                 getLibros();
               }

@@ -20,7 +20,8 @@ import { URL_BASE } from "../config/URL_BASE";
 
 //imports de los componentes
 import BookCard from "../components/BookCard";
-
+import { Alert } from 'react-native';
+// alertas 
 
 export default function Search({ navigation }) {
   const [page, setPage] = useState(1);
@@ -35,7 +36,14 @@ export default function Search({ navigation }) {
     const url = `${URL_BASE}/api/archivo/?page=${page}&search=${consulta}`;
     const token = await SecureStore.getItemAsync("token");
     if (consulta.trim() === "") {
-      alert("ingrese datos de busqueda");
+      Alert.alert(
+        'ATENCION',
+        'Ingrese datos de busqueda.',
+        [
+          { text: 'ACEPTAR', onPress: () => console.log('Presionado ACEPTAR') },
+          
+        ]
+      );
     } else {
       const request = await fetch(url, {
         method: "GET",

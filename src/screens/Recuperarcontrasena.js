@@ -14,6 +14,8 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { URL_BASE } from "../config/URL_BASE";
 import Loading from "../components/Loading";
+import { Alert } from 'react-native';
+// alertas 
 export default function Recuperarcontrasena({ navigation }) {
   const [email, setEmail] = useState("");
   const [state, setState] = useState("await");
@@ -32,7 +34,14 @@ export default function Recuperarcontrasena({ navigation }) {
     });
     const respuesta = await solicitud.json();
     respuesta.email === email
-      ? (alert("revise su correo para el siguiente paso"),
+      ? (Alert.alert(
+        'VERIFICACION',
+        'Consulte su corrreo para el siguiente paso.',
+        [
+          { text: 'ACEPTAR', onPress: () => console.log('Presionado ACEPTAR') },
+          
+        ]
+      ),
         navigation.navigate("Verificarcodigo"))
       : alert(respuesta.email);
   };

@@ -202,15 +202,9 @@ const AddAutor = () => {
             value={asesor_interno}
             onChangeText={(text) => setAsesor_interno(text)}
           />
-          <TextInput
-            placeholder="Asesor Externo"
-            style={styles.input}
-            label="Password"
-            returnKeyType="done"
-            value={asesor_externo}
-            onChangeText={(text) => setAsesor_externo(text)}
-          />
-
+          
+         
+            
 
           <View style={styles.seleccion}>
             <Picker

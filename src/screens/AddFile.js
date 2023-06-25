@@ -178,8 +178,9 @@ const AddFile = () => {
   };
 
   //funcion que limpia los campos
+  //linea 183 (null)
   const cleanFields = () => {
-    setAutor(null);
+    setAutor("");
     setFechaPublicacion(new Date());
     setFileImg(null);
     setFilePdf(null);
@@ -187,6 +188,7 @@ const AddFile = () => {
     setTipo_publicacion(null);
     setTitulo("");
     setResumen("");
+    
   };
 
   //codigo de prueba
@@ -275,6 +277,7 @@ const AddFile = () => {
                 setTitulo(text);
               }}
             />
+            
 
             <TextInput
               multiline={true}
@@ -293,9 +296,9 @@ const AddFile = () => {
             />
 
             <TextInput
-              placeholder="Materia"
+              placeholder="Categoria"
               style={styles.input}
-              label="materia"
+              label="categoria"
               autoCapitalize="none"
               autoCompleteType=""
               textContentType=""
@@ -346,6 +349,8 @@ const AddFile = () => {
                 ))}
               </Picker>
             </View>
+
+            
             <View style={styles.seleccion}>
               <Picker
                 selectedValue={autor}
@@ -361,6 +366,9 @@ const AddFile = () => {
                 ))}
               </Picker>
             </View>
+
+
+            
 
             <TouchableOpacity
               Styles={styles.containerIN}
